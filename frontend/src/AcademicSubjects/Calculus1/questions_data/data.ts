@@ -1,0 +1,35 @@
+// interface Question {
+//     id: number;
+//     question: string;
+//     options: string[];
+//     correctAnswer: string;
+// }
+
+
+// export const questions :Question[] = [
+//     {
+//         id: 1,
+//         question: "What is the capital of Uzbekistan?",
+//         options: ["Samarqand", "Osh", "Xiva", "Tashkent"],
+//         correctAnswer: "Tashkent",
+//     },
+//     {
+//         id: 2,
+//         question: "What is the capital of India?",
+//         options: ["Delhi", "Mumbai", "Kolkata", "Chennai"],
+//         correctAnswer: "Delhi",
+//     },
+//     {
+//         id: 3,
+//         question: "What is the capital of Haryana?",
+//         options: ["Yamunanagar", "Panipat", "Gurgaon", "Chandigarh"],
+//         correctAnswer: "Chandigarh",
+//     },
+//     {
+//         id: 4,
+//         question: "What is the capital of Punjab?",
+//         options: ["Patiala", "Ludhiana", "Amritsar", "Chandigarh"],
+//         correctAnswer: "Chandigarh",
+//     },
+// ]
+
