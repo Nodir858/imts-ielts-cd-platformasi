@@ -19,7 +19,7 @@ export class Exams {
     // @Prop({required: true, trim:true})
     // passingMarks!: number
 
-    @Prop([{required: true, type: mongoose.Schema.Types.ObjectId, ref: 'Questions'}])
+    @Prop([{required: true, type: [String], ref: 'Questions'}])
     question!: mongoose.Types.ObjectId[];
 
 }

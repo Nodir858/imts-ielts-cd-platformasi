@@ -5,12 +5,13 @@ import { AuthService } from "./auth.service";
 import { JwtStrategy } from "./strategies/jwt.strategy";
 import { RolesGuard } from "./guards/roles.guard";
 import { UsersModule } from "../user/users.module";
+import { jwtConstants } from "./constants/constants";
 @Module({
     imports: [
         UsersModule,
         JwtModule.register({
             global: true,
-            secret: 'nodir123',
+            secret: jwtConstants.secret,
             signOptions: {
                 expiresIn: '7d'
             }
