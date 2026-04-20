@@ -41,7 +41,7 @@ export class ExamsService {
     //edit exam by id
     async updateExamsById(id: string, createExamsDto: CreateExamsDto): Promise<Exams | null> {
         try{
-            const exam = this.examsModel.findByIdAndUpdate(
+            const exam = await this.examsModel.findByIdAndUpdate(
                 id,
                 {$set: createExamsDto}
             )
