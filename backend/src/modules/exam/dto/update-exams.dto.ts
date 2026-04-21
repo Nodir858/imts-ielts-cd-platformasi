@@ -18,5 +18,11 @@ export class UpdateExamsDto {
         })
         @IsString()
         category!: string
-    
+        
+        @IsString()
+        options!: string
+
+        @IsNotEmpty()
+        @IsString()
+        correctOption!: string  
 }

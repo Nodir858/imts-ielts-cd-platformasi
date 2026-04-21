@@ -4,6 +4,7 @@ import { CreateExamsDto } from "./dto/create-exams.dto";
 import { Roles } from "../auth/decorator/roles.decorator";
 import { Role } from "../user/users.entity";
 import { UpdateExamsDto } from "./dto/update-exams.dto";
+import { AddQuestionDto } from "./dto/create-question.dto";
 
 @Controller('exams')
 
@@ -38,5 +39,11 @@ export class ExamsController {
     @Roles(Role.ADMIN)
     async delete(@Param('id') id: string){
         return this.examsService.deleteExamById(id)
+    }
+
+    @Post(':id/questions')
+    @Roles(Role.ADMIN)
+    addQuestion(@Param('id') id: string, @Body() addQuestionDto: AddQuestionDto){
+        return this.examsService.addQuestionToExam(id, addQuestionDto)
     }
 }

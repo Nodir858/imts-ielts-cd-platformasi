@@ -7,16 +7,15 @@ export class CreateExamsDto {
     @IsString()
     title!: string
 
-    @IsNumber({})
     @IsNotEmpty({
-        message:"Description is required"
+        message:"Duration is required"
     })
+    @IsNumber({}, {message: 'Duration must be a number'})
     duration!: number
 
     @IsNotEmpty({
-        message: 'category'
+        message: 'category is required'
     })
     @IsString()
     category!: string
-
 }

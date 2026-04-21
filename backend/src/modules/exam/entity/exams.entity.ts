@@ -1,6 +1,7 @@
 import { Schema, Prop, SchemaFactory } from "@nestjs/mongoose";
 import { Role } from "../../user/users.entity";
 import mongoose from "mongoose";
+import { Question, QuestionSchema } from "./question.entity";
 
 @Schema({timestamps: true, collection: 'exams'})
 export class Exams {
@@ -13,15 +14,8 @@ export class Exams {
     @Prop({required: true})
     category!:string
 
-    // @Prop({require: true, trim: true})
-    // totalMarks!: number
-
-    // @Prop({required: true, trim:true})
-    // passingMarks!: number
-
-    @Prop([{required: true, type: [String], ref: 'Questions'}])
-    question!: mongoose.Types.ObjectId[];
-
+    @Prop({type: [QuestionSchema], default: []})
+    questions!: Question[]
 }
 
 export const ExamsSchema = SchemaFactory.createForClass(Exams);
