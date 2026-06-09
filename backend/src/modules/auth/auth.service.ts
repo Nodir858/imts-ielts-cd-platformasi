@@ -3,6 +3,7 @@ import { UsersService } from "../user/users.service";
 import { JwtService } from "@nestjs/jwt";
 import { Role } from "../user/users.entity";
 import * as bcrypt from 'bcrypt';
+import { access } from "fs";
 
 //JWT (JSON Web Token)
 //it is like digital ID card that your server gives to the user after login and signup
@@ -52,7 +53,17 @@ export class AuthService{
                 throw new UnauthorizedException('Invalid credentials')
             }
 
-            return this.generateToken(user);
+            const token = await this.generateToken(user)
+
+            return {
+                access_token: token.access_token,
+
+                user: {
+                    username: user.username,
+                    email: user.email,
+                    role: user.role
+                }
+            }   
         }catch(error){
             throw new Error(`Error logging in ${error} user ${error}`)
         }

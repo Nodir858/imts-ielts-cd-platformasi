@@ -5,6 +5,7 @@ import { Roles } from "../auth/decorator/roles.decorator";
 import { Role } from "../user/users.entity";
 import { UpdateExamsDto } from "./dto/update-exams.dto";
 import { AddQuestionDto } from "./dto/create-question.dto";
+import { UpdateQuestionDto } from "./dto/update-question.dto";
 
 @Controller('exams')
 
@@ -12,7 +13,7 @@ export class ExamsController {
     constructor (private readonly examsService: ExamsService) {}
 
     @Post()
-    @Roles(Role.ADMIN)
+    // @Roles(Role.ADMIN)
     async create(@Body() createExamsDto: CreateExamsDto){
         return this.examsService.create(createExamsDto)
     }
@@ -45,5 +46,17 @@ export class ExamsController {
     @Roles(Role.ADMIN)
     addQuestion(@Param('id') id: string, @Body() addQuestionDto: AddQuestionDto){
         return this.examsService.addQuestionToExam(id, addQuestionDto)
+    }
+
+    @Patch(':examId/questions/:questionId')
+    @Roles(Role.ADMIN)
+    updateQuestion(@Param('examId') examId: string, @Param('questionId') questionId: string, @Body() updateQuestionDto: UpdateQuestionDto){
+        return this.examsService.updateQuestionInExam(examId, questionId, updateQuestionDto)
+    }
+
+    @Delete(':examId/questions/:questionId')
+    @Roles(Role.ADMIN)
+    async deleteQuestion(@Param('examId') examId: string, @Param('questionId') questionId: string){
+        return this.examsService.deleteQuestionInExam(examId, questionId)
     }
 }

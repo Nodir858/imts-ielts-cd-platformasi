@@ -22,7 +22,10 @@ export default function Navbar() {
                     <Link to="/">
                         <ul>Главная</ul>
                     </Link>
+                    <Link to="/user">
                         <ul>Статус</ul>
+                    </Link>
+                        
                         <Link to="/test">
                             <ul>Тесты</ul>
                         </Link>

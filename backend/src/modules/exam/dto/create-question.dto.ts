@@ -1,4 +1,5 @@
-import { IsArray, IsNotEmpty, IsString } from "class-validator";
+import { Type } from "class-transformer";
+import { IsArray, IsBoolean, IsNotEmpty, IsString, ValidateNested } from "class-validator";
 
 export class AddQuestionDto {
     @IsString()
@@ -6,6 +7,8 @@ export class AddQuestionDto {
     text!: string;
 
     @IsArray()
+    @ValidateNested({ each: true })
+    @Type(() => OptionDto)  
     options!: OptionDto[]
 }
 
@@ -14,5 +17,6 @@ class OptionDto {
     @IsNotEmpty()
     text!: string;
 
+    @IsBoolean()
     isCorrect!: boolean;
 }
